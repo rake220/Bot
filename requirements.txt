@@ -8,4 +8,4 @@ python-magic==0.4.27
 openai==0.28.0
 sentence-transformers==2.2.2
 transformers==4.39.3
-torch==2.1.0
+torch==2.2.1  # Changed to a supported version
