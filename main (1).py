@@ -1,21 +1,23 @@
+#!/usr/bin/env python
+# coding: utf-8
+
+# In[7]:
+
+
 import os
-
-
-
 import streamlit as st
 import pickle
 import time
 import faiss
 import numpy as np
 from langchain.text_splitter import RecursiveCharacterTextSplitter
-from langchain_community.document_loaders import UnstructuredURLLoader
+from langchain.document_loaders import UnstructuredURLLoader
 from sentence_transformers import SentenceTransformer
 from transformers import pipeline, AutoModelForSeq2SeqLM, AutoTokenizer
 
 # Constants
 FILE_PATH = "faiss_store.pkl"
 
-# Streamlit UI
 st.title("RockyBot: News Research Tool 📈")
 st.sidebar.title("News Article URLs")
 
@@ -23,19 +25,18 @@ st.sidebar.title("News Article URLs")
 urls = st.sidebar.text_area("Enter article URLs (one per line)").split("\n")
 process_url_clicked = st.sidebar.button("Process URLs")
 
-
 # Load Hugging Face LLM (Replaces OpenAI)
+@st.cache_resource
 def load_llm():
     model_name = "google/flan-t5-base"
     tokenizer = AutoTokenizer.from_pretrained(model_name)
     model = AutoModelForSeq2SeqLM.from_pretrained(model_name)
     return pipeline("text2text-generation", model=model, tokenizer=tokenizer)
 
-
-# Load Sentence Transformer for embeddings
+# Load Sentence Transformer model for embeddings
+@st.cache_resource
 def load_embedding_model():
     return SentenceTransformer("all-MiniLM-L6-v2")
-
 
 # Process URLs and store FAISS index
 def process_urls(urls, embedding_model):
@@ -65,11 +66,10 @@ def process_urls(urls, embedding_model):
         time.sleep(2)
 
     except ModuleNotFoundError:
-        st.error(
-            "Missing 'unstructured' package. Please install it using: `pip install unstructured unstructured[all]`")
+        st.error("Missing dependencies. Install using:")
+        st.code("pip install unstructured pdfminer.six unstructured-inference unstructured-pytesseract")
     except Exception as e:
         st.error(f"Error processing URLs: {e}")
-
 
 # Retrieve answers from FAISS
 def query_llm(question, generator, embedding_model):
@@ -95,7 +95,6 @@ def query_llm(question, generator, embedding_model):
     except Exception as e:
         return f"Error: {str(e)}"
 
-
 # Load models
 generator = load_llm()
 embedding_model = load_embedding_model()
@@ -110,3 +109,52 @@ if query:
     answer = query_llm(query, generator, embedding_model)
     st.subheader("Answer:")
     st.write(answer)
+
+
+# In[2]:
+
+
+pip install faiss-cpu
+
+
+# In[4]:
+
+
+pip install --upgrade streamlit transformers sentence-transformers faiss-cpu langchain unstructured pdfminer.six unstructured-inference unstructured-pytesseract
+
+
+# In[6]:
+
+
+pip install -U langchain-community
+
+
+# In[8]:
+
+
+get_ipython().system('streamlit run main.py')
+
+
+# In[9]:
+
+
+jupyter nbconvert --to script main.ipynb
+
+
+# In[ ]:
+
+
+
+
+
+# In[ ]:
+
+
+
+
+
+# In[ ]:
+
+
+
+
