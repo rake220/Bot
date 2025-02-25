@@ -1,7 +1,7 @@
 #!/usr/bin/env python
 # coding: utf-8
 
-# In[7]:
+# In[9]:
 
 
 import os
@@ -108,37 +108,7 @@ query = st.text_input("Ask a question:")
 if query:
     answer = query_llm(query, generator, embedding_model)
     st.subheader("Answer:")
-    st.write(answer)
-
-
-# In[2]:
-
-
-pip install faiss-cpu
-
-
-# In[4]:
-
-
-pip install --upgrade streamlit transformers sentence-transformers faiss-cpu langchain unstructured pdfminer.six unstructured-inference unstructured-pytesseract
-
-
-# In[6]:
-
-
-pip install -U langchain-community
-
-
-# In[8]:
-
-
-get_ipython().system('streamlit run main.py')
-
-
-# In[9]:
-
-
-jupyter nbconvert --to script main.ipynb
+    st.write(answer) 
 
 
 # In[ ]:
