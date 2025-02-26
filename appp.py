@@ -1,16 +1,18 @@
 #!/usr/bin/env python
 # coding: utf-8
 
-# In[13]:
+# In[15]:
 
 
-get_ipython().system('pip install streamlit faiss-cpu numpy langchain sentence-transformers transformers pdfminer.six unstructured unstructured-inference unstructured-pytesseract')
+##!pip install streamlit faiss-cpu numpy langchain sentence-transformers transformers pdfminer.six unstructured unstructured-inference unstructured-pytesseract
 
 
-# In[14]:
+# In[16]:
 
 
 import os
+os.system("pip install faiss-cpu")
+
 import streamlit as st
 import pickle
 import time
