@@ -1,7 +1,13 @@
 #!/usr/bin/env python
 # coding: utf-8
 
-# In[9]:
+# In[11]:
+
+
+pip install streamlit faiss-cpu numpy langchain sentence-transformers transformers pdfminer.six unstructured unstructured-inference unstructured-pytesseract
+
+
+# In[12]:
 
 
 import os
