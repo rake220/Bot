@@ -4,10 +4,7 @@
 # In[9]:
 
 
-
 import os
-
-
 import streamlit as st
 import pickle
 import time
