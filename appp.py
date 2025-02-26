@@ -6,12 +6,12 @@
 
 
 import os
-os.system("pip install faiss-cpu==1.7.4 --no-cache-dir")
+
 
 import streamlit as st
 import pickle
 import time
-##import faiss
+import faiss
 import numpy as np
 from langchain.text_splitter import RecursiveCharacterTextSplitter
 from langchain.document_loaders import UnstructuredURLLoader
