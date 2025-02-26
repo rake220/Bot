@@ -7,7 +7,7 @@
 ##!pip install streamlit faiss-cpu numpy langchain sentence-transformers transformers pdfminer.six unstructured unstructured-inference unstructured-pytesseract
 
 
-# In[16]:
+# In[17]:
 
 
 import os
@@ -16,7 +16,14 @@ os.system("pip install faiss-cpu")
 import streamlit as st
 import pickle
 import time
-import faiss
+##import faiss
+try:
+    import faiss
+except ImportError:
+    import os
+    os.system("pip install faiss-cpu")
+    import faiss
+
 import numpy as np
 from langchain.text_splitter import RecursiveCharacterTextSplitter
 from langchain.document_loaders import UnstructuredURLLoader
