@@ -4,7 +4,10 @@
 # In[9]:
 
 
+
 import os
+os.system("pip install faiss-cpu==1.7.4 --no-cache-dir")
+
 import streamlit as st
 import pickle
 import time
