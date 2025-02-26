@@ -1,13 +1,13 @@
 #!/usr/bin/env python
 # coding: utf-8
 
-# In[11]:
+# In[13]:
 
 
-pip install streamlit faiss-cpu numpy langchain sentence-transformers transformers pdfminer.six unstructured unstructured-inference unstructured-pytesseract
+get_ipython().system('pip install streamlit faiss-cpu numpy langchain sentence-transformers transformers pdfminer.six unstructured unstructured-inference unstructured-pytesseract')
 
 
-# In[12]:
+# In[14]:
 
 
 import os
